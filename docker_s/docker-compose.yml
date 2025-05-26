@@ -19,6 +19,7 @@ services:
     working_dir: /application
     environment:
       - PHP_WORKER_INSTALL_BCMATH=true
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ./../:/application
       - ./sourcefiles/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
