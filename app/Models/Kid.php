@@ -9,4 +9,13 @@ class Kid extends Model
 {
     /** @use HasFactory<\Database\Factories\KidFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'declension_name',
+        'history',
+        'start_fundraising',
+        'end_fundraising',
+    ];
 }
