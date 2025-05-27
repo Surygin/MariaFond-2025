@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\KidController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestoController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/testo', [TestoController::class, 'testo']);
+Route::get('/kids', [KidController::class, 'index']);
+Route::get('/kid/{id}', [KidController::class, 'show']);
