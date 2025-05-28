@@ -3,8 +3,10 @@
 @section('content')
 
     <ul>
-        <li>Name: {{ $kid->name }}</li>
-        <li>Name: {{ $kid->history }}</li>
+        <li>ФИО: {{ $kid->first_name }}</li>
+        <li>История: {{ $kid->history }}</li>
+        <hr>
+        <li>Собрано: {{ $kid->start_fundraising }}</li>
     </ul>
 
     <hr>

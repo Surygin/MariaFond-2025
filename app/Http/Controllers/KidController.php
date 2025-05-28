@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Kid\StoreRequest;
 use App\Http\Requests\Kid\UpdateRequest;
 use App\Models\Kid;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -50,7 +52,11 @@ class KidController extends Controller
         return redirect()->route('kids');
     }
 
-    public function edit(Kid $kid)
+    /**
+     * @param Kid $kid
+     * @return View
+     */
+    public function edit(Kid $kid): View
     {
         return view('admin.kids.edit', compact('kid'));
     }
@@ -63,8 +69,9 @@ class KidController extends Controller
     public function update(UpdateRequest $request, Kid $kid): RedirectResponse
     {
         $data = $request->validationData();
+        $data['start_fundraising'] = $kid->start_fundraising + $data['fundraising'];
         $kid->update($data);
-        return redirect()->route('kids');
+        return redirect()->route('kids.index');
     }
 
     /**

@@ -20,7 +20,7 @@
     <h2>HEADER</h2>
     <ul class="header__menu">
         <li><a href="{{ route('home') }}">Home</a></li> |
-        <li><a href="{{ route('kids') }}">Kids</a></li> |
+        <li><a href="{{ route('kids.index') }}">Kids</a></li> |
         <li><a href="{{ route('kids.create') }}">Add Kid</a></li>
     </ul>
     <hr>

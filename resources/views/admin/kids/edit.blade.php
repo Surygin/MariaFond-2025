@@ -24,14 +24,21 @@
         @error('history')
         <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
         @enderror
-        <input type="text" name="end_fundraising" placeholder="Необходимая сумма" value="{{ $kid->start_fundraising }}"><br>
-        @error('start_fundraising')
+
+        <input type="text" name="fundraising" placeholder="Сколько пожертвовали"><br>
+        @error('fundraising')
         <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
         @enderror
-        <input type="text" name="end_fundraising" placeholder="Необходимая сумма" value="{{ $kid->end_fundraising }}"><br>
-        @error('end_fundraising')
-        <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
-        @enderror
+
+{{--        <input type="text" name="end_fundraising" placeholder="Необходимая сумма" value="{{ $kid->start_fundraising }}"><br>--}}
+{{--        @error('start_fundraising')--}}
+{{--        <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>--}}
+{{--        @enderror--}}
+{{--        <input type="text" name="end_fundraising" placeholder="Необходимая сумма" value="{{ $kid->end_fundraising }}"><br>--}}
+{{--        @error('end_fundraising')--}}
+{{--        <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>--}}
+{{--        @enderror--}}
+
         <button type="submit">Отправить</button>
         {{--        <input type="submit" value="Создать">--}}
     </form>
