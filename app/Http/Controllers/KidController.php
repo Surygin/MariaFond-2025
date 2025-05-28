@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Kid\StoreRequest;
 use App\Http\Requests\Kid\UpdateRequest;
 use App\Models\Kid;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -42,7 +40,7 @@ class KidController extends Controller
 
 
     /**
-     * @param Request $request
+     * @param StoreRequest $request
      * @return RedirectResponse
      */
     public function store(StoreRequest $request): RedirectResponse
