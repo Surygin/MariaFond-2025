@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Kid\StoreRequest;
 use App\Http\Requests\Kid\UpdateRequest;
+use App\Mail\Kid\FinishFundraisingMail;
 use App\Models\Kid;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class KidController extends Controller
@@ -47,7 +50,7 @@ class KidController extends Controller
     {
         $data = $request->validationData();
         Kid::create($data);
-        return redirect()->route('kids');
+        return redirect()->route('kids.index');
     }
 
     /**
@@ -66,9 +69,16 @@ class KidController extends Controller
      */
     public function update(UpdateRequest $request, Kid $kid): RedirectResponse
     {
+
         $data = $request->validationData();
         $data['start_fundraising'] = $kid->start_fundraising + $data['fundraising'];
         $kid->update($data);
+
+        if ($kid->start_fundraising >= $kid->end_fundraising)
+        {
+            $user = User::find(1);
+            Mail::to($user)->send(new FinishFundraisingMail($kid));
+        }
         return redirect()->route('kids.index');
     }
 
