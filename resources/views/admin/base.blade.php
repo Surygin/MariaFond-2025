@@ -19,9 +19,12 @@
 <header>
     <h2>HEADER</h2>
     <ul class="header__menu">
-        <li><a href="{{ route('home') }}">Home</a></li> |
-        <li><a href="{{ route('kids.index') }}">Kids</a></li> |
-        <li><a href="{{ route('kids.create') }}">Add Kid</a></li>
+        <li><a href="{{ route('home') }}">Главная</a></li> |
+        @auth()
+            <li><a href="{{ route('kids.index') }}">Дети</a></li> |
+            <li><a href="{{ route('kids.create') }}">Добавить реципиента</a></li>
+            <li><a href="{{ route('logout') }}">Выход</a></li>
+        @endauth
     </ul>
     <hr>
 </header>
