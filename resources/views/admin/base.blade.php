@@ -21,6 +21,7 @@
     <ul class="header__menu">
         <li><a href="{{ route('home') }}">Главная</a></li> |
         @auth()
+            <li><a href="{{ route('profile.show') }}">Профиль</a></li> |
             <li><a href="{{ route('kids.index') }}">Дети</a></li> |
             <li><a href="{{ route('kids.create') }}">Добавить реципиента</a></li>
             <li><a href="{{ route('logout') }}">Выход</a></li>
