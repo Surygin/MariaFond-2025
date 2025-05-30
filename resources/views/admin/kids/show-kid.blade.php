@@ -3,10 +3,10 @@
 @section('content')
 
     <ul>
-        <li>ФИО: {{ $kid->first_name }}</li>
-        <li>История: {{ $kid->history }}</li>
-        <hr>
-        <li>Собрано: {{ $kid->start_fundraising }}</li>
+        <li style="margin-bottom: 10px; padding-bottom: 10px;">ФИО: {{ $kid->first_name }}</li>
+        <li style="border-bottom: 2px solid #a0aec0; margin-bottom: 10px; padding-bottom: 10px;">История: {{ $kid->history }}</li>
+        <li><h3>Собрано: {{ $kid->start_fundraising }}</h3></li>
+        <li><h3>Требуемая сумма: {{ $kid->end_fundraising }}</h3></li>
     </ul>
 
     <hr>
