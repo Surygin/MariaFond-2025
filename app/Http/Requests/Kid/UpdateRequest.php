@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
             'last_name' => 'string|min:2|max:144',
             'declension_name' => 'string|min:2|max:144',
             'history' => 'string|min:2',
-            'fundraising' => 'numeric|gt:0',
+            'fundraising' => 'nullable|numeric|gt:0',
         ];
     }
 }
