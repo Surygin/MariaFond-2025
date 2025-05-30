@@ -3,8 +3,12 @@
 @section('content')
 
     <form action="{{ route('kids.store') }}" method="post">
+
         <h3>Создание реципиента</h3>
         @csrf
+
+        <input type="hidden" name="url" value="{{ fake()->imageUrl }}">
+
         <input type="text" name="first_name" placeholder="Имя" value="{{ fake()->firstName() }}"><br>
         @error('first_name')
         <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
@@ -27,7 +31,7 @@
         <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
         @enderror
         <button type="submit">Отправить</button>
-{{--        <input type="submit" value="Создать">--}}
+
     </form>
 
 @endsection

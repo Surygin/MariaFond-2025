@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class KidController extends Controller
 {
@@ -29,7 +30,6 @@ class KidController extends Controller
      */
     public function show($id):View
     {
-//        dd(fake()->imageUrl);
         $kid = Kid::findOrFail($id);
         return view('admin.kids.show-kid', compact('kid'));
     }
@@ -50,7 +50,16 @@ class KidController extends Controller
     public function store(StoreRequest $request): RedirectResponse
     {
         $data = $request->validationData();
-        Kid::create($data);
+
+        DB::beginTransaction();
+
+        $kid = Kid::create($data);
+        $kid->image()->create([
+            'url' => $data['url']
+        ]);
+
+        DB::commit();
+
         return redirect()->route('kids.index');
     }
 
