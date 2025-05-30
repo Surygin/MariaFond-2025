@@ -29,6 +29,7 @@ class KidController extends Controller
      */
     public function show($id):View
     {
+//        dd(fake()->imageUrl);
         $kid = Kid::findOrFail($id);
         return view('admin.kids.show-kid', compact('kid'));
     }
