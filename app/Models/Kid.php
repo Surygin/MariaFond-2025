@@ -17,5 +17,6 @@ class Kid extends Model
         'history',
         'start_fundraising',
         'end_fundraising',
+        'is_active',
     ];
 }

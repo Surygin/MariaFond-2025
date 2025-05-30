@@ -19,7 +19,7 @@ class KidController extends Controller
      */
     public function index():View
     {
-        $kids = Kid::all();
+        $kids = Kid::all()->where('is_active', true);
         return view('admin.kids.list', compact('kids'));
     }
 
@@ -76,8 +76,10 @@ class KidController extends Controller
 
         if ($kid->start_fundraising >= $kid->end_fundraising)
         {
-            $user = User::find(1);
-            Mail::to($user)->send(new FinishFundraisingMail($kid));
+//            $user = User::find(1);
+            $status['is_active'] = false;
+            $kid->update($status);
+            Mail::to('anton@premier-partner.ru')->send(new FinishFundraisingMail($kid));
         }
         return redirect()->route('kids.index');
     }
