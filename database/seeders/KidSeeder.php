@@ -13,6 +13,13 @@ class KidSeeder extends Seeder
      */
     public function run(): void
     {
-        Kid::factory(5)->create();
+        $kids = Kid::factory(5)->create();
+
+        foreach ($kids as $kid)
+        {
+            $kid->image()->create([
+                'url' => fake()->imageUrl
+            ]);
+        }
     }
 }
