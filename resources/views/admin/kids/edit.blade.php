@@ -4,8 +4,12 @@
 
     <form action="{{ route('kids.update', $kid->id) }}" method="post">
         <h3>Создание реципиента</h3>
+
         @csrf
         @method('put')
+
+        <input type="hidden" name="url" value="{{ fake()->imageUrl }}">
+
         <input type="hidden" value="{{ $kid->id }}">
         <input type="text" name="first_name" placeholder="Имя" value="{{ $kid->first_name }}"><br>
         @error('first_name')
