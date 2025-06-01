@@ -6,13 +6,10 @@ use App\Http\Requests\Kid\StoreRequest;
 use App\Http\Requests\Kid\UpdateRequest;
 use App\Mail\Kid\FinishFundraisingMail;
 use App\Models\Kid;
-use App\Models\User;
+use App\Services\KidService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\DB;
-
 class KidController extends Controller
 {
     /**
@@ -50,15 +47,7 @@ class KidController extends Controller
     public function store(StoreRequest $request): RedirectResponse
     {
         $data = $request->validationData();
-
-        DB::beginTransaction();
-
-        $kid = Kid::create($data);
-        $kid->image()->create([
-            'url' => $data['url']
-        ]);
-
-        DB::commit();
+        KidService::store($data);
 
         return redirect()->route('kids.index');
     }
