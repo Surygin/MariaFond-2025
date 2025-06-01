@@ -68,18 +68,8 @@ class KidController extends Controller
      */
     public function update(UpdateRequest $request, Kid $kid): RedirectResponse
     {
-
         $data = $request->validationData();
-        $data['start_fundraising'] = $kid->start_fundraising + $data['fundraising'];
-        $kid->update($data);
-
-        if ($kid->start_fundraising >= $kid->end_fundraising)
-        {
-//            $user = User::find(1);
-            $status['is_active'] = false;
-            $kid->update($status);
-            Mail::to('anton@premier-partner.ru')->send(new FinishFundraisingMail($kid));
-        }
+        KidService::update($data, $kid);
         return redirect()->route('kids.index');
     }
 
