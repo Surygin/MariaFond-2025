@@ -30,6 +30,11 @@ class KidService
         return $kid;
     }
 
+    /**
+     * @param array $data
+     * @param Kid $kid
+     * @return Kid
+     */
     public static function update(array $data, Kid $kid): Kid
     {
         $image = Image::where('imageable_id', $kid->id)->first();
