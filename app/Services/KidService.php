@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\Fundraising\EndFundraisingSendMailJob;
 use App\Mail\Kid\FinishFundraisingMail;
 use App\Models\Image;
 use App\Models\Kid;
@@ -50,7 +51,7 @@ class KidService
         {
             $status['is_active'] = false;
             $kid->update($status);
-            Mail::to('anton@premier-partner.ru')->send(new FinishFundraisingMail($kid));
+            EndFundraisingSendMailJob::dispatch($kid);
         }
 
         DB::commit();
