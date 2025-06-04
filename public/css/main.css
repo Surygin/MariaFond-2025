@@ -18,6 +18,18 @@ body .article__box form .btn-more {
   margin-top: 20px;
 }
 
+#alert-msg{
+    position: fixed;
+    right: 5vw;
+    top: 5vh;
+    min-width: 220px;
+}
+#close-alert{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
 .header {
   color: #5a5050;
 }

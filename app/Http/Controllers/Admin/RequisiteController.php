@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Contacts\UpdateRequest;
-use App\Models\Contact;
+use App\Http\Requests\Requisites\UpdateRequest;
+use App\Models\Requisite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ContactController extends Controller
+class RequisiteController extends Controller
 {
     /**
      * @return View
      */
     public function show(): View
     {
-        $contacts = Contact::findOrFail(1);
-        return view('admin.contacts.show', compact('contacts'));
+        $requisites = Requisite::findOrFail(1);
+        return view('admin.requisites.show', compact('requisites'));
     }
 
     /**
@@ -27,10 +27,10 @@ class ContactController extends Controller
     public function update(UpdateRequest $request): RedirectResponse
     {
         $data = $request->validationData();
-        $contacts = Contact::findOrFail(1);
-        $contacts->update($data);
+        $requisites = Requisite::findOrFail(1);
+        $requisites->update($data);
         $request->session()->flash('status', 'Данные обновлены!');
 
-        return redirect()->route('admin.contacts.show');
+        return redirect()->route('admin.requisites.show');
     }
 }

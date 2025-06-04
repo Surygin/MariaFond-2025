@@ -28,6 +28,7 @@ class CompanyController extends Controller
         $data = $request->validationData();
         $about = Company::findOrFail(1);
         $about->update($data);
+        $request->session()->flash('status', 'Данные обновлены!');
 
         return redirect()->route('admin.about');
     }

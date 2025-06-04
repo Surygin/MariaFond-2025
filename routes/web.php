@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\RequisiteController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KidController;
 use App\Http\Controllers\ProfileController;
@@ -36,5 +37,6 @@ Route::prefix('admin')
         Route::get('/contacts', [ContactController::class, 'show'])->name('admin.contacts.show');
         Route::post('/contacts', [ContactController::class, 'update'])->name('admin.contacts.update');
 
-        Route::get('/requisites', [TestoController::class, 'testoRequ']);
+        Route::get('/requisites', [RequisiteController::class, 'show'])->name('admin.requisites.show');
+        Route::post('/requisites', [RequisiteController::class, 'update'])->name('admin.requisites.update');
 });

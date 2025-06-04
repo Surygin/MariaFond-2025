@@ -4,9 +4,9 @@
 
     <div class="col-lg-8 col-12">
 
-        <form class="form" action="" method="post">
+        <form class="form" action="{{ route('admin.requisites.update') }}" method="post">
             <h2>Реквизиты:</h2>
-
+            @csrf
             <input class="form-control mb-3" type="text" name="inn" placeholder="Введите ИНН" value="{{ $requisites->inn }}">
             @error('inn')
             <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
