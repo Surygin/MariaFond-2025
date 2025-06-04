@@ -39,15 +39,7 @@
                     </tbody>
                 </table>
 
-                <nav aria-label="Пример навигации по страницам">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
-                    </ul>
-                </nav>
+                {{ $kids->links() }}
 
             </div>
             <!-- /.article__box -->
