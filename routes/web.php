@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KidController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +33,8 @@ Route::prefix('admin')
         Route::get('/about', [CompanyController::class, 'show'])->name('admin.about');
         Route::post('/about', [CompanyController::class, 'store'])->name('admin.about.store');
 
-        Route::get('/contacts', [TestoController::class, 'testoContacts']);
+        Route::get('/contacts', [ContactController::class, 'show'])->name('admin.contacts.show');
+        Route::post('/contacts', [ContactController::class, 'update'])->name('admin.contacts.update');
+
         Route::get('/requisites', [TestoController::class, 'testoRequ']);
 });
