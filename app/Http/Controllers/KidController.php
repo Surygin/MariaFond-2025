@@ -15,7 +15,7 @@ class KidController extends Controller
      */
     public function index():View
     {
-        $kids = Kid::all()->where('is_active', true);
+        $kids = Kid::query()->where('is_active', true)->paginate(5);
         return view('admin.kids.list', compact('kids'));
     }
 
