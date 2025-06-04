@@ -2,18 +2,23 @@
 
 @section('content')
 
-    <img src="{{ $kid->image->url }}" alt="{{ $kid->first_name .' '. $kid->last_name}}">
+    <div class="col-lg-8 col-12">
 
-    <ul>
-        <li style="margin-bottom: 10px; padding-bottom: 10px;">ФИО: {{ $kid->first_name }}</li>
-        <li style="border-bottom: 2px solid #a0aec0; margin-bottom: 10px; padding-bottom: 10px;">История: {{ $kid->history }}</li>
-        <li><h3>Собрано: {{ $kid->start_fundraising }}</h3></li>
-        <li><h3>Требуемая сумма: {{ $kid->end_fundraising }}</h3></li>
-    </ul>
+        <img src="{{ $kid->image->url }}" class="img-fluid rounded-start" alt="{{ $kid->first_name .' '. $kid->last_name}}">
 
-    <hr>
-    <ul>
-        <li><a href="{{ url()->previous() }}">Назад</a></li>
-    </ul>
+        <h5 class="card-title">ФИО: {{ $kid->first_name . ' ' . $kid->last_name}}</h5>
+        <p class="card-text">{{ $kid->history }}</p>
+
+        <ul>
+            <li><h3>Собрано: {{ $kid->start_fundraising }}</h3></li>
+            <li><h3>Требуемая сумма: {{ $kid->end_fundraising }}</h3></li>
+        </ul>
+
+
+
+        <a class="btn btn-more" href="{{ url()->previous() }}">Назад</a>
+
+    </div>
+    <!-- /.col-lg-8 col-12 -->
 
 @endsection
