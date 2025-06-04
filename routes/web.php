@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KidController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestoController;
 use App\Http\Middleware\MyAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +29,9 @@ Route::prefix('admin')
 
         Route::resource('kids', KidController::class);
 
-        Route::get('/about', [\App\Http\Controllers\TestoController::class, 'testo']);
-        Route::get('/contacts', [\App\Http\Controllers\TestoController::class, 'testoContacts']);
-        Route::get('/requisites', [\App\Http\Controllers\TestoController::class, 'testoRequ']);
+        Route::get('/about', [CompanyController::class, 'show'])->name('admin.about');
+        Route::post('/about', [CompanyController::class, 'store'])->name('admin.about.store');
+
+        Route::get('/contacts', [TestoController::class, 'testoContacts']);
+        Route::get('/requisites', [TestoController::class, 'testoRequ']);
 });

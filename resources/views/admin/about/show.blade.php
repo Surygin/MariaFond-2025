@@ -4,9 +4,9 @@
 
     <div class="col-lg-8 col-12">
 
-        <form class="form" action="" method="post">
+        <form class="form" action="{{ route('admin.about.store') }}" method="post">
             <h2>О нас</h2>
-
+            @csrf
             <input class="form-control mb-3" type="text" name="title" placeholder="Введите название" value="{{ $about->title }}">
             @error('title')
             <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
