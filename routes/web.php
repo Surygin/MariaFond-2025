@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\RequisiteController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KidController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestoController;
 use App\Http\Middleware\MyAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +31,12 @@ Route::prefix('admin')
 
         Route::resource('kids', KidController::class);
 
-        Route::get('/about', [\App\Http\Controllers\TestoController::class, 'testo']);
-        Route::get('/contacts', [\App\Http\Controllers\TestoController::class, 'testoContacts']);
-        Route::get('/requisites', [\App\Http\Controllers\TestoController::class, 'testoRequ']);
+        Route::get('/about', [CompanyController::class, 'show'])->name('admin.about');
+        Route::post('/about', [CompanyController::class, 'store'])->name('admin.about.store');
+
+        Route::get('/contacts', [ContactController::class, 'show'])->name('admin.contacts.show');
+        Route::post('/contacts', [ContactController::class, 'update'])->name('admin.contacts.update');
+
+        Route::get('/requisites', [RequisiteController::class, 'show'])->name('admin.requisites.show');
+        Route::post('/requisites', [RequisiteController::class, 'update'])->name('admin.requisites.update');
 });

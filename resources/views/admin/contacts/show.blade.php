@@ -4,9 +4,9 @@
 
     <div class="col-lg-8 col-12">
 
-        <form class="form" action="" method="post">
+        <form class="form" action="{{ route('admin.contacts.update') }}" method="post">
             <h2>Контакты:</h2>
-
+            @csrf
             <input class="form-control mb-3" type="text" name="phone" placeholder="Введите телефон" value="{{ $contacts->phone }}">
             @error('phone')
             <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
