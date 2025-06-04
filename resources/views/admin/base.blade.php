@@ -111,7 +111,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p>&copy;2025 сайт разработал <a href="https://vk.com/suryginanton">Антон Сурыгин</a>.</p>
+                <p>&copy;2025 сайт разработал <a href="{{ env('DEVELOPER_LINK', '#') }}">Антон Сурыгин</a>.</p>
             </div>
             <!-- /.col-12 -->
         </div>
