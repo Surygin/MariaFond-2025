@@ -2,16 +2,19 @@
 
 @section('content')
 
-    <h1>Привет - {{ $user->name }}!</h1>
+    <div class="col-lg-8 col-12">
+        <h1>Привет - {{ $user->name }}!</h1>
 
-    <p>
-        Мой логин: <br>
-        {{ $user->email }}
-    </p>
-    <p>
-        <a href="{{ route('profile.edit.password') }}">
-            Сменить пароль!
-        </a>
-    </p>
+        <p>
+            Мой email: <br>
+            {{ $user->email }}
+        </p>
+        <p>
+            <a class="btn btn-more" href="{{ route('profile.edit.password') }}">
+                Сменить пароль!
+            </a>
+        </p>
+    </div>
+    <!-- /.col-lg-8 col-12 -->
 
 @endsection

@@ -26,4 +26,8 @@ Route::prefix('admin')
         #end profile routes
 
         Route::resource('kids', KidController::class);
+
+        Route::get('/about', [\App\Http\Controllers\TestoController::class, 'testo']);
+        Route::get('/contacts', [\App\Http\Controllers\TestoController::class, 'testoContacts']);
+        Route::get('/requisites', [\App\Http\Controllers\TestoController::class, 'testoRequ']);
 });

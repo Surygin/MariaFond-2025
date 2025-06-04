@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Kid\StoreRequest;
 use App\Http\Requests\Kid\UpdateRequest;
-use App\Mail\Kid\FinishFundraisingMail;
 use App\Models\Kid;
 use App\Services\KidService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 class KidController extends Controller
 {
