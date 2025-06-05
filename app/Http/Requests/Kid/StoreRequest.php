@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'declension_name' => 'required|string|min:2|max:144',
             'history' => 'required|string|min:2',
             'end_fundraising' => 'required|integer|min:1000|max:100000',
-            'url' => 'string'
+            'url' => 'required|image'
         ];
     }
 }

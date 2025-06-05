@@ -4,7 +4,7 @@
 
     <div class="col-lg-8 col-12">
 
-        <img src="{{ $kid->image->url }}" class="img-fluid rounded-start" alt="{{ $kid->first_name .' '. $kid->last_name}}">
+        <img src="{{ asset($kid->image_for_kid ) }}" class="img-fluid rounded-start" alt="{{ $kid->first_name .' '. $kid->last_name}}">
 
         <h5 class="card-title">ФИО: {{ $kid->first_name . ' ' . $kid->last_name}}</h5>
         <p class="card-text">{{ $kid->history }}</p>

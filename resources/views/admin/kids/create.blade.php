@@ -3,13 +3,15 @@
 @section('content')
 
     <div class="col-lg-8 col-12">
-        <form action="{{ route('kids.store') }}" method="post">
+        <form action="{{ route('kids.store') }}" method="post" enctype="multipart/form-data">
 
             <h3>Создание реципиента</h3>
             @csrf
 
-            <input type="hidden" name="url" value="{{ fake()->imageUrl }}">
-
+            <input class="form-control mb-3" type="file" name="url" placeholder="Выбирите файл">
+            @error('url')
+            <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
+            @enderror
             <input class="form-control" type="text" name="first_name" placeholder="Имя" value="{{ fake()->firstName() }}"><br>
             @error('first_name')
             <div class="alert alert-danger" style="background-color: pink; color: deeppink;">{{ $message }}</div>
