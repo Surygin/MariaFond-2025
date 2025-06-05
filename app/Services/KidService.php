@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Kid;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class KidService
 {
@@ -17,7 +18,11 @@ class KidService
      */
     public static function store($data): Kid
     {
-        $url = !empty($data['url']) ? $data['url'] : 'default.jpg';
+
+        $url = 'default.jpg';
+        if(!empty($data['url'])){
+            $url = Storage::disk('public')->put('/recipient', $data['url']);
+        }
 
         DB::beginTransaction();
 
@@ -38,14 +43,26 @@ class KidService
      */
     public static function update(array $data, Kid $kid): Kid
     {
-        $image = Image::where('imageable_id', $kid->id)->first();
+        $url = $kid->image->url;
+
+        if(!empty($data['url'])){
+
+            try {
+                Storage::disk('public')->delete($url);
+                $url = Storage::disk('public')->put('/recipient', $data['url']);
+            } catch ( \Exception $exception) {
+
+            }
+
+        }
 
         DB::beginTransaction();
 
-        $image->update($data);
-
         $data['start_fundraising'] = $kid->start_fundraising + $data['fundraising'];
         $kid->update($data);
+        $kid->image()->update([
+            'url' => $url
+        ]);
 
         if ($kid->start_fundraising >= $kid->end_fundraising)
         {
