@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Profile\ChangePasswordRequest;
 use App\Models\Kid;
-use App\Models\User;
+use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
@@ -20,10 +20,9 @@ class ProfileController extends Controller
     public function show():View
     {
         $user = Auth::user();
-        $recipients = Kid::count();
-        $recipientsActive = Kid::where('is_active', true)->count();
-        $recipientsDone = Kid::where('is_active', false)->count();
-        return view('admin.profile.show', compact('user', 'recipients', 'recipientsActive', 'recipientsDone'));
+        $data = ProfileService::showQuantityRecipients();
+
+        return view('admin.profile.show', compact('user', 'data'));
     }
 
     /**

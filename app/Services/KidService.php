@@ -6,6 +6,7 @@ use App\Jobs\Fundraising\EndFundraisingSendMailJob;
 use App\Mail\Kid\FinishFundraisingMail;
 use App\Models\Image;
 use App\Models\Kid;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -32,6 +33,10 @@ class KidService
         ]);
 
         DB::commit();
+
+        Cache::forget('recipients');
+        Cache::forget('recipientsActive');
+        Cache::forget('recipientDone');
 
         return $kid;
     }
@@ -72,6 +77,10 @@ class KidService
         }
 
         DB::commit();
+
+        Cache::forget('recipients');
+        Cache::forget('recipientsActive');
+        Cache::forget('recipientDone');
 
         return $kid;
     }

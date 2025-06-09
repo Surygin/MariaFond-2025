@@ -28,9 +28,9 @@
             </thead>
             <tbody>
             <tr>
-                <td>{{ $recipients }}</td>
-                <td>{{ $recipientsActive }}</td>
-                <td>{{ $recipientsDone }}</td>
+                <td>{{ $data['recipients'] }}</td>
+                <td>{{ $data['recipientsActive'] }}</td>
+                <td>{{ $data['recipientsDone'] }}</td>
             </tr>
             </tbody>
         </table>
