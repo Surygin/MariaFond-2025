@@ -21,8 +21,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $recipients = Kid::count();
-        $recipientsActive = Kid::all()->where('is_active', true)->count();
-        $recipientsDone = Kid::all()->where('is_active', false)->count();
+        $recipientsActive = Kid::where('is_active', true)->count();
+        $recipientsDone = Kid::where('is_active', false)->count();
         return view('admin.profile.show', compact('user', 'recipients', 'recipientsActive', 'recipientsDone'));
     }
 
