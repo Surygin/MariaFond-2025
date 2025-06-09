@@ -20,9 +20,9 @@ class ProfileController extends Controller
     public function show():View
     {
         $user = Auth::user();
-        $data = ProfileService::showQuantityRecipients();
+        $recipients = ProfileService::showQuantityRecipients();
 
-        return view('admin.profile.show', compact('user', 'data'));
+        return view('admin.profile.show', compact('user', 'recipients'));
     }
 
     /**

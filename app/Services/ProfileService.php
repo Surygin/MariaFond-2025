@@ -21,9 +21,9 @@ class ProfileService
         });
 
         return collect([
-            'recipients'        => $recipients,
-            'recipientsActive'  => $recipientsActive,
-            'recipientsDone'    => $recipientsDone
+            'all'        => $recipients,
+            'active'  => $recipientsActive,
+            'done'    => $recipientsDone
         ]);
     }
 }
