@@ -11,19 +11,16 @@ class ProfileService
     public static function showQuantityRecipients(): Collection
     {
         $recipients = Cache::remember('recipients', now()->addDay(), function () {
-            return Kid::count();
-        });
-        $recipientsActive = Cache::remember('recipientsActive', now()->addDay(), function () {
-            return Kid::where('is_active', true)->count();
-        });
-        $recipientsDone = Cache::remember('recipientDone', now()->addDay(), function () use ($recipients, $recipientsActive){
-            return $recipients - $recipientsActive;
+            $all = Kid::count();
+            $active = Kid::where('is_active', true)->count();
+
+            return [
+                'all' => $all,
+                'active' => $active,
+                'done' => $all - $active
+            ];
         });
 
-        return collect([
-            'all'        => $recipients,
-            'active'  => $recipientsActive,
-            'done'    => $recipientsDone
-        ]);
+        return collect($recipients);
     }
 }
