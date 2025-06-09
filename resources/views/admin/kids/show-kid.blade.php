@@ -4,6 +4,8 @@
 
     <div class="col-lg-8 col-12">
 
+        <a class="btn btn-more mb-3" href="{{ url()->previous() }}">Назад</a>
+
         <img src="{{ $kid->image->url }}" class="img-fluid rounded-start" alt="{{ $kid->first_name .' '. $kid->last_name}}">
 
         <h5 class="card-title">ФИО: {{ $kid->first_name . ' ' . $kid->last_name}}</h5>
@@ -16,7 +18,7 @@
 
 
 
-        <a class="btn btn-more" href="{{ url()->previous() }}">Назад</a>
+
 
     </div>
     <!-- /.col-lg-8 col-12 -->
