@@ -14,6 +14,26 @@
                 Сменить пароль!
             </a>
         </p>
+
+        <hr>
+
+        <h2>Реципиенты:</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Всего</th>
+                <th scope="col">Активно</th>
+                <th scope="col">Закрыты</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ $recipients }}</td>
+                <td>{{ $recipientsActive }}</td>
+                <td>{{ $recipientsDone }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <!-- /.col-lg-8 col-12 -->
 

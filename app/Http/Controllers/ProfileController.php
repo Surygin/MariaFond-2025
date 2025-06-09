@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Profile\ChangePasswordRequest;
+use App\Models\Kid;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,13 +13,17 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
     /**
      * @return View
      */
     public function show():View
     {
         $user = Auth::user();
-        return view('admin.profile.show', compact('user'));
+        $recipients = Kid::count();
+        $recipientsActive = Kid::all()->where('is_active', true)->count();
+        $recipientsDone = Kid::all()->where('is_active', false)->count();
+        return view('admin.profile.show', compact('user', 'recipients', 'recipientsActive', 'recipientsDone'));
     }
 
     /**
