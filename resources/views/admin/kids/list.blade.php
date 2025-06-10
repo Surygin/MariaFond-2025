@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                         @foreach($kids as $kid)
-                            <tr>
+                            <tr @if(!$kid->is_active) style="background-color: #E5EECE" @endif>
                                 <th scope="row">*</th>
                                 <td><a href="{{ route('kids.show', $kid->id) }}">{{ $kid->first_name . ' ' . $kid->last_name}}</a></td>
                                 <td>
