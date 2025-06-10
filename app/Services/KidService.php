@@ -35,8 +35,6 @@ class KidService
         DB::commit();
 
         Cache::forget('recipients');
-        Cache::forget('recipientsActive');
-        Cache::forget('recipientDone');
 
         return $kid;
     }
@@ -79,8 +77,6 @@ class KidService
         DB::commit();
 
         Cache::forget('recipients');
-        Cache::forget('recipientsActive');
-        Cache::forget('recipientDone');
 
         return $kid;
     }
